@@ -28,7 +28,6 @@ describe('prepend-image-resolution tests', function () {
     })
   })
 
-  //this test is going to check for dimensions on file name
   /*it('app should check if dimensions were added to file name', function (done) {
     exec('node prepend-image-resolution.js images', (error, stdout, stderr) => {
       if (stderr) {
