@@ -12,8 +12,30 @@ describe('prepend-image-resolution tests', function () {
         console.log(`stderr: ${stderr}`)
         return
       }
-      expect(stdout).to.include('please supply valid image type')
+      expect(stdout).to.include('no folder of images was supplied')
       done()
     })
   })
+
+  it('app should check if supplied file exists', function (done) {
+    exec('node prepend-image-resolution.js cat', (error, stdout, stderr) => {
+      if (stderr) {
+        console.log(`stderr: ${stderr}`)
+        return
+      }
+      expect(stdout).to.include('folder not found')
+      done()
+    })
+  })
+
+  /*it('app should check if dimensions were added to file name', function (done) {
+    exec('node prepend-image-resolution.js images', (error, stdout, stderr) => {
+      if (stderr) {
+        console.log(`stderr: ${stderr}`)
+        return
+      }
+      expect(stdout).to.include('')
+      done()
+    })
+  })*/
 })

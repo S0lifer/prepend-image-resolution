@@ -4,7 +4,12 @@ const sizeOf = require('image-size')
 const FileType = require('file-type')
 const imageFolder = process.argv[2]
 if(imageFolder === undefined) {
-  console.log('please supply valid image type')
+  console.log('no folder of images was supplied')
+  process.exit(1)
+}
+
+if (fs.existsSync(imageFolder) === false) {
+  console.log('folder not found')
   process.exit(1)
 }
 
