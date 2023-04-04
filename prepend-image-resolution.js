@@ -2,6 +2,11 @@ const path = require('path')
 const fs = require('fs')
 const sizeOf = require('image-size')
 const FileType = require('file-type')
+const imageFolder = process.argv[2]
+if(imageFolder === undefined) {
+  console.log('please supply valid image type')
+  process.exit(1)
+}
 
 ;(async () => {
 async function getAllFiles (dirPath, arrayOfFiles) {
@@ -35,5 +40,5 @@ async function getAllFiles (dirPath, arrayOfFiles) {
   return arrayOfFiles 
 }
 
-const results = await getAllFiles(process.argv[2])
+const results = await getAllFiles(imageFolder)
 })()
