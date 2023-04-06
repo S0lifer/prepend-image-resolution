@@ -2,6 +2,16 @@ const path = require('path')
 const fs = require('fs')
 const sizeOf = require('image-size')
 const FileType = require('file-type')
+const imageFolder = process.argv[2]
+if(imageFolder === undefined) {
+  console.log('no folder of images was supplied')
+  process.exit(1)
+}
+
+if (fs.existsSync(imageFolder) === false) {
+  console.log('folder not found')
+  process.exit(1)
+}
 
 ;(async () => {
 async function getAllFiles (dirPath, arrayOfFiles) {
@@ -35,5 +45,5 @@ async function getAllFiles (dirPath, arrayOfFiles) {
   return arrayOfFiles 
 }
 
-const results = await getAllFiles(process.argv[2])
+const results = await getAllFiles(imageFolder)
 })()

@@ -1,6 +1,18 @@
 {
   "dependencies": {
-    "image-size": "^1.0.2",
-    "file-type": "16.5.4"
+    "coverage": "^0.4.1",
+    "file-type": "16.5.4",
+    "image-size": "^1.0.2"
+  },
+
+  "scripts": {
+    "test": "mocha",
+    "coverage": "c8 --reporter=text --reporter=lcov mocha --timeout 25000 test"
+  },
+
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "chai": "^4.3.7",
+    "c8": "7.13.0"
   }
 }
