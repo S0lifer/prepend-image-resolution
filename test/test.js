@@ -35,10 +35,12 @@ describe('prepend-image-resolution tests', function () {
         return
       }
       const images = fs.readdirSync('images')
-      console.log(images)
       expect(images).to.include('347x200_Pumpkins.jpeg')
       expect(images).to.include('360x360_Donut2.jpeg')
       expect(images).to.include('455x360_Donut1.jpeg')
+      fs.renameSync('images/347x200_Pumpkins.jpeg','images/Pumpkins.jpeg')
+      fs.renameSync('images/360x360_Donut2.jpeg', 'images/Donut2.jpeg')
+      fs.renameSync('images/455x360_Donut1.jpeg', 'images/Donut1.jpeg')
       done()
     })
   })
