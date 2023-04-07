@@ -22,6 +22,7 @@ async function getAllFiles (dirPath, arrayOfFiles) {
       files = fs.readdirSync(dirPath)
   } catch (err) {
       console.log('Unable to scan directory: ' + err)
+      process.exit(1)
   }
 
   arrayOfFiles = arrayOfFiles || []
