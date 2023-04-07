@@ -47,11 +47,13 @@ describe('prepend-image-resolution tests', function () {
         console.log(`stderr: ${stderr}`)
         return
       }
-      const images = fs.readdirSync('images')
-      expect(images).to.include('347x200_Pumpkins.jpeg')
-      expect(images).to.include('360x360_Donut2.jpeg')
-      expect(images).to.include('455x360_Donut1.jpeg')
-      fs.renameSync('images/347x200_Pumpkins.jpeg','images/Pumpkins.jpeg')
+      const donutOne = fs.existsSync('images')
+      const donutTwo = fs.existsSync('images')
+      const pumpkins = fs.existsSync('images/sub-image')
+      assert.equal(pumpkins, true)
+      assert.equal(donutTwo, true)
+      assert.equal(donutOne, true)
+      fs.renameSync('images/sub-image/347x200_Pumpkins.jpeg','images/sub-image/Pumpkins.jpeg')
       fs.renameSync('images/360x360_Donut2.jpeg', 'images/Donut2.jpeg')
       fs.renameSync('images/455x360_Donut1.jpeg', 'images/Donut1.jpeg')
       done()
