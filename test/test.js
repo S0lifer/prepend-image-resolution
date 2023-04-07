@@ -6,7 +6,7 @@ const { exec } = require('child_process')
 const { stdout } = require('process')
 
 describe('prepend-image-resolution tests', function () {
-  it('app has been supplied with nothing', function (done) {
+  it('should quit if supplied with nothing', function (done) {
     exec('node prepend-image-resolution.js', (error, stdout, stderr) => {
       if (stderr) {
         console.log(`stderr: ${stderr}`)
@@ -17,7 +17,18 @@ describe('prepend-image-resolution tests', function () {
     })
   })
 
-  it('app should check if supplied file exists', function (done) {
+  it('should quit if supplied with something other than a folder', function (done) {
+    exec('node prepend-image-resolution.js package.json', (error, stdout, stderr) => {
+      if (stderr) {
+        console.log(`stderr: ${stderr}`)
+        return
+      }
+      expect(stdout).to.include('Unable to scan directory:')
+      done()
+    })
+  })
+
+  it('app should check if supplied folder exists', function (done) {
     exec('node prepend-image-resolution.js cat', (error, stdout, stderr) => {
       if (stderr) {
         console.log(`stderr: ${stderr}`)
@@ -27,6 +38,8 @@ describe('prepend-image-resolution tests', function () {
       done()
     })
   })
+
+  
 
   it('app should check if dimensions were added to file name', function (done) {
     exec('node prepend-image-resolution.js images', (error, stdout, stderr) => {
